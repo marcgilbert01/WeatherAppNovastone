@@ -87,6 +87,7 @@ public class WeatherApiForOpenWeather implements IWeatherApi {
 
     private WeatherDataUI buildWeatherDataUi(WeatherData weatherData){
         WeatherDataUI weatherDataUI = new WeatherDataUI();
+        weatherDataUI.setName(weatherData.getName());
         weatherDataUI.setTempInCelcius(weatherData.getMain().getTemp());
         weatherDataUI.setWindInKmPerHr(weatherData.getWind().getSpeed());
 

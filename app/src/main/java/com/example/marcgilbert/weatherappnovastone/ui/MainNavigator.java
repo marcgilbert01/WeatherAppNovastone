@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.example.marcgilbert.weatherappnovastone.api.City;
+import com.example.marcgilbert.weatherappnovastone.ui.citySelector.CitySelectorFragment;
 
 import java.util.List;
 
@@ -21,11 +22,15 @@ public class MainNavigator {
 
     private AppCompatActivity mActivity;
     private @IdRes int mFragmentContainerId;
-    private FragmentManager mFragmentManager;
 
+    public MainNavigator(AppCompatActivity activity, int fragmentContainerId) {
+        mActivity = activity;
+        mFragmentContainerId = fragmentContainerId;
+    }
 
     public void navigateToCountryListScreen(List<City> cityList){
-
+        CitySelectorFragment fragment = CitySelectorFragment.newInstance(cityList);
+        showFragment(fragment, SCREEN_TAG_CITY_LIST);
     }
 
     public void navigateToWeatherDetailsScreen(WeatherDataUI weatherDataUI){
