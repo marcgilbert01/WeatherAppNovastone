@@ -48,9 +48,7 @@ public class WeatherApiForOpenWeather implements IWeatherApi {
             @Override
             public WeatherDataUI call() throws Exception {
                 WeatherData weatherData = getCurrentWeatherForOneCity(city);
-                WeatherDataUI weatherDataUI = new WeatherDataUI();
-                weatherDataUI.setTempInCelcius(weatherData.getMain().getTemp());
-                weatherDataUI.setWindInKmPerHr(weatherData.getWind().getSpeed());
+                WeatherDataUI weatherDataUI = buildWeatherDataUi(weatherData);
 
                 return weatherDataUI;
             }
@@ -89,7 +87,9 @@ public class WeatherApiForOpenWeather implements IWeatherApi {
         WeatherDataUI weatherDataUI = new WeatherDataUI();
         weatherDataUI.setName(weatherData.getName());
         weatherDataUI.setTempInCelcius(weatherData.getMain().getTemp());
-        weatherDataUI.setWindInKmPerHr(weatherData.getWind().getSpeed());
+        weatherDataUI.setWindInKmPerHr(weatherData.getWind().getSpeed()+"km/hr");
+        weatherDataUI.setMinTemp(weatherData.getMain().getTemp_min());
+        weatherDataUI.setMaxTemp(weatherData.getMain().getTemp_max());
 
         return weatherDataUI;
     }

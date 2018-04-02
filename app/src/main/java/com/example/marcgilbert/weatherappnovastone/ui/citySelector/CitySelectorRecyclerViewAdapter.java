@@ -8,15 +8,18 @@ import android.view.ViewGroup;
 
 import com.example.marcgilbert.weatherappnovastone.R;
 import com.example.marcgilbert.weatherappnovastone.ui.WeatherDataUI;
+import com.example.marcgilbert.weatherappnovastone.ui.weatherDetails.WeatherDetailsFragment;
 
 import java.util.List;
 
 public class CitySelectorRecyclerViewAdapter extends RecyclerView.Adapter<CityCellViewModel>{
 
     private List<WeatherDataUI> mWeatherDataUiList;
+    private OnCityClickListener mOnCityClickListener;
 
-    public CitySelectorRecyclerViewAdapter(List<WeatherDataUI> weatherDataUiList) {
+    public CitySelectorRecyclerViewAdapter(List<WeatherDataUI> weatherDataUiList, OnCityClickListener onCityClickListener) {
         mWeatherDataUiList = weatherDataUiList;
+        mOnCityClickListener = onCityClickListener;
     }
 
     @Override
@@ -27,11 +30,26 @@ public class CitySelectorRecyclerViewAdapter extends RecyclerView.Adapter<CityCe
 
     @Override
     public void onBindViewHolder(CityCellViewModel holder, int position) {
-        holder.bind(mWeatherDataUiList.get(position));
+        final WeatherDataUI weatherDataUI = mWeatherDataUiList.get(position);
+        holder.bind(weatherDataUI, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnCityClickListener!=null) {
+                    mOnCityClickListener.onCityClicked(weatherDataUI);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mWeatherDataUiList.size();
     }
+
+    interface OnCityClickListener {
+
+        void onCityClicked(WeatherDataUI weatherDataUI);
+
+    }
+
 }

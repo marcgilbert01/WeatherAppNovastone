@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void showWeatherDetails(City city) {
-
+    public void showWeatherDetails(WeatherDataUI weatherDataUI) {
+        mNavigator.navigateToWeatherDetailsScreen(weatherDataUI);
     }
 
     @Override
@@ -94,5 +94,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void onBackPressed() {
         super.onBackPressed();
         navigateBack();
+    }
+
+    @Override
+    public void onCitySelected(WeatherDataUI weatherDataUI) {
+        mPresenter.onCitySelected(weatherDataUI);
     }
 }

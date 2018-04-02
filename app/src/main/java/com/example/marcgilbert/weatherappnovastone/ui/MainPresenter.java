@@ -35,8 +35,8 @@ public class MainPresenter implements MainContract.Presenter{
     }
 
     @Override
-    public void onCitySelected() {
-
+    public void onCitySelected(WeatherDataUI weatherDataUI) {
+        mView.showWeatherDetails(weatherDataUI);
     }
 
     @Override

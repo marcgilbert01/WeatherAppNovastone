@@ -23,7 +23,7 @@ public class CitySelectorContract {
 
         void onViewStop();
 
-        void onCountrySelected(City city);
+        void onCountrySelected(WeatherDataUI weatherDataUI);
     }
 
     interface Interactor {

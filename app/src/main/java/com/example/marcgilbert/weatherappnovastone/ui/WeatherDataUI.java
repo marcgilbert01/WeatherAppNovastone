@@ -1,9 +1,13 @@
 package com.example.marcgilbert.weatherappnovastone.ui;
 
-public class WeatherDataUI {
+import java.io.Serializable;
+
+public class WeatherDataUI implements Serializable{
 
     private String mName;
     private String mTempInCelcius;
+    private String mMinTemp;
+    private String mMaxTemp;
     private String mWindInKmPerHr;
 
     public String getName() {
@@ -28,5 +32,21 @@ public class WeatherDataUI {
 
     public void setWindInKmPerHr(String windInKmPerHr) {
         mWindInKmPerHr = windInKmPerHr;
+    }
+
+    public String getMinTemp() {
+        return mMinTemp;
+    }
+
+    public void setMinTemp(String minTemp) {
+        mMinTemp = minTemp;
+    }
+
+    public String getMaxTemp() {
+        return mMaxTemp;
+    }
+
+    public void setMaxTemp(String maxTemp) {
+        mMaxTemp = maxTemp;
     }
 }

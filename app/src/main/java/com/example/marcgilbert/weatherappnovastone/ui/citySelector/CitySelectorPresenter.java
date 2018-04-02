@@ -62,7 +62,7 @@ public class CitySelectorPresenter implements CitySelectorContract.Presenter{
     }
 
     @Override
-    public void onCountrySelected(City city) {
-
+    public void onCountrySelected(WeatherDataUI weatherDataUI) {
+        mView.setSelectedCity(weatherDataUI);
     }
 }

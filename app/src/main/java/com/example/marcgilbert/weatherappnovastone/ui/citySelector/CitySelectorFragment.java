@@ -93,15 +93,23 @@ public class CitySelectorFragment extends Fragment implements CitySelectorContra
 
     @Override
     public void displayWeatherOverviewList(List<WeatherDataUI> weatherDataUIList) {
-        mRecyclerView.setAdapter(new CitySelectorRecyclerViewAdapter(weatherDataUIList));
+        mRecyclerView.setAdapter(
+                new CitySelectorRecyclerViewAdapter(weatherDataUIList, new CitySelectorRecyclerViewAdapter.OnCityClickListener() {
+                    @Override
+                    public void onCityClicked(WeatherDataUI weatherDataUI) {
+                        mPresenter.onCountrySelected(weatherDataUI);
+                    }
+                }));
     }
 
     @Override
     public void setSelectedCity(WeatherDataUI weatherDataUI) {
-
+        mListener.onCitySelected(weatherDataUI);
     }
 
     public interface CitySelectorFragmentListener {
+
+        void onCitySelected(WeatherDataUI weatherDataUI);
 
     }
 }

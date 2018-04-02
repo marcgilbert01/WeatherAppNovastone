@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 
 import com.example.marcgilbert.weatherappnovastone.api.City;
 import com.example.marcgilbert.weatherappnovastone.ui.citySelector.CitySelectorFragment;
+import com.example.marcgilbert.weatherappnovastone.ui.weatherDetails.WeatherDetailsFragment;
 
 import java.util.List;
 
@@ -34,7 +35,8 @@ public class MainNavigator {
     }
 
     public void navigateToWeatherDetailsScreen(WeatherDataUI weatherDataUI){
-
+        WeatherDetailsFragment fragment = WeatherDetailsFragment.newInstance(weatherDataUI);
+        showFragment(fragment, SCREEN_TAG_WEATHER_DETAILS);
     }
 
     private void showFragment(Fragment fragment, String tag){

@@ -13,7 +13,7 @@ public interface MainContract {
 
         void showWeatherOverviewCityList(List<City> cityList);
 
-        void showWeatherDetails(City city);
+        void showWeatherDetails(WeatherDataUI weatherDataUI);
 
         void displayTitleForCityListScreen();
 
@@ -28,7 +28,7 @@ public interface MainContract {
 
         void onFlowStop();
 
-        void onCitySelected();
+        void onCitySelected(WeatherDataUI weatherDataUI);
 
         void onNewScreenDisplayed(String screenTag);
 
