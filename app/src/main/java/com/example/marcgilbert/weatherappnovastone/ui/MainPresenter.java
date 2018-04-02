@@ -35,13 +35,21 @@ public class MainPresenter implements MainContract.Presenter{
     }
 
     @Override
-    public void onCountrySelected() {
+    public void onCitySelected() {
 
     }
 
     @Override
-    public void onNewScreenDisplayed() {
-
+    public void onNewScreenDisplayed(String screenTag) {
+        switch (screenTag) {
+            case MainNavigator.SCREEN_TAG_CITY_LIST:
+                mView.displayTitleForCityListScreen();
+                break;
+        }
     }
 
+    @Override
+    public void onUserNavigatingBack() {
+        mView.navigateBack();
+    }
 }

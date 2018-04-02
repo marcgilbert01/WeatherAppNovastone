@@ -18,6 +18,8 @@ public interface MainContract {
         void displayTitleForCityListScreen();
 
         void displayTitleForCity(@StringRes int cityTitle);
+
+        void navigateBack();
     }
 
     interface Presenter {
@@ -26,9 +28,11 @@ public interface MainContract {
 
         void onFlowStop();
 
-        void onCountrySelected();
+        void onCitySelected();
 
-        void onNewScreenDisplayed();
+        void onNewScreenDisplayed(String screenTag);
+
+        void onUserNavigatingBack();
     }
 
     interface Interactor {
