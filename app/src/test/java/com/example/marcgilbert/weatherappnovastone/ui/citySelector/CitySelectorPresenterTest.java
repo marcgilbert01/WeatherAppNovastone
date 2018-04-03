@@ -6,6 +6,7 @@ import com.example.marcgilbert.weatherappnovastone.ui.WeatherDataUI;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +24,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class CitySelectorPresenterTest {
 
-    @Rule
-    public RxImmediateSchedulerRule schedulers = new RxImmediateSchedulerRule();
+    @ClassRule
+    public static RxImmediateSchedulerRule schedulers = new RxImmediateSchedulerRule();
     @Mock
     private CitySelectorContract.View mView;
     @Mock
@@ -50,5 +51,7 @@ public class CitySelectorPresenterTest {
         verifyNoMoreInteractions(mView);
         verifyNoMoreInteractions(mInteractor);
     }
+
+    // TODO the other tests :)
 
 }
