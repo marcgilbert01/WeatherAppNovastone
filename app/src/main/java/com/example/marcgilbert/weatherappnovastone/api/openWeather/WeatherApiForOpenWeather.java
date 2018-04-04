@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.example.marcgilbert.weatherappnovastone.api.City;
 import com.example.marcgilbert.weatherappnovastone.api.IWeatherApi;
+import com.example.marcgilbert.weatherappnovastone.api.openWeather.pojos.Weather;
 import com.example.marcgilbert.weatherappnovastone.api.openWeather.pojos.WeatherData;
 import com.example.marcgilbert.weatherappnovastone.api.openWeather.pojos.WeatherDataList;
 import com.example.marcgilbert.weatherappnovastone.api.openWeather.retrofit.RetrofitClient;
@@ -25,7 +26,9 @@ public class WeatherApiForOpenWeather implements IWeatherApi {
 
     private static final String OPEN_WEATHER_API_KEY = "06a1fe7ee329a75c9b23561cc9f17903";
     private static final String OPEN_WEATHER_BASE_URL = "http://api.openweathermap.org";
+    private static final String OPEN_WEATHER_ICON_BASE_URL = "http://openweathermap.org/img/w/";
     private static final String UNITS = "metric";
+    private static final String ICON_FILE_EXTENSION = ".png";
 
     private Map<City,String> mOpenWeatherCityIdMap = new HashMap<>();
 
@@ -90,6 +93,12 @@ public class WeatherApiForOpenWeather implements IWeatherApi {
         weatherDataUI.setWindInKmPerHr(weatherData.getWind().getSpeed()+"km/hr");
         weatherDataUI.setMinTemp(weatherData.getMain().getTemp_min());
         weatherDataUI.setMaxTemp(weatherData.getMain().getTemp_max());
+        if (weatherData.getWeather()!=null && weatherData.getWeather().length>0) {
+            Weather weather = weatherData.getWeather()[0];
+            weatherDataUI.setWeatherIconUrl(OPEN_WEATHER_ICON_BASE_URL+weather.getIcon()+ICON_FILE_EXTENSION);
+            weatherDataUI.setWeatherTitle(weather.getMain());
+            weatherDataUI.setWeatherDescription(weather.getDescription());
+        }
 
         return weatherDataUI;
     }

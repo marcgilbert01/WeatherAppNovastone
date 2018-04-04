@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.marcgilbert.weatherappnovastone.R;
+import com.example.marcgilbert.weatherappnovastone.ui.IconDisplayUtils;
 import com.example.marcgilbert.weatherappnovastone.ui.WeatherDataUI;
 
 public class CityCellViewModel extends RecyclerView.ViewHolder{
@@ -26,10 +27,8 @@ public class CityCellViewModel extends RecyclerView.ViewHolder{
 
     public void bind(WeatherDataUI weatherDataUI, View.OnClickListener onClickListener){
         mTextViewCityName.setText(weatherDataUI.getName());
-        // TODO to be done with glide or picasso  etc ...
-        mImageViewIconWeather.setImageResource(R.drawable.cloud);
         mTextViewCurrentTemperature.setText(weatherDataUI.getTempInCelcius());
         mItemView.setOnClickListener(onClickListener);
+        IconDisplayUtils.loadWeatherIconFromUrl(mImageViewIconWeather, weatherDataUI.getWeatherIconUrl());
     }
-
 }

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.marcgilbert.weatherappnovastone.R;
+import com.example.marcgilbert.weatherappnovastone.ui.IconDisplayUtils;
 import com.example.marcgilbert.weatherappnovastone.ui.WeatherDataUI;
 
 /**
@@ -52,8 +53,6 @@ public class WeatherDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_weather_details, container, false);
         TextView textViewCity = view.findViewById(R.id.cityName);
         textViewCity.setText(mWeatherDataUI.getName());
-        ImageView imageViewIconWeather = view.findViewById(R.id.weatherIcon);
-        imageViewIconWeather.setImageResource(R.drawable.cloud);
         TextView textViewCurrentTemperature = view.findViewById(R.id.currentTemperature);
         textViewCurrentTemperature.setText(mWeatherDataUI.getTempInCelcius());
         TextView textViewMinTemp = view.findViewById(R.id.minTemperature);
@@ -62,6 +61,8 @@ public class WeatherDetailsFragment extends Fragment {
         textViewMaxTemp.setText(mWeatherDataUI.getMaxTemp());
         TextView textViewWindSpeed = view.findViewById(R.id.windSpeed);
         textViewWindSpeed.setText(mWeatherDataUI.getWindInKmPerHr());
+        ImageView imageViewIconWeather = view.findViewById(R.id.weatherIcon);
+        IconDisplayUtils.loadWeatherIconFromUrl(imageViewIconWeather, mWeatherDataUI.getWeatherIconUrl());
 
         return view;
     }
